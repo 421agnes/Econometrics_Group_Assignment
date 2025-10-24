@@ -5,9 +5,9 @@ library(dplyr)
 
 # Read raw daily station-level price data and compute weekly averages per station
 
-data_raw <- read_excel("C:/Users/421ag/Group assignment/2025.09.02-09.08.xlsx", sheet = "Sheet1")
+data <- read_excel("C:/Users/421ag/Group assignment/2025.09.02-09.08.xlsx", sheet = "Sheet1")
 
-data_avg <- data_raw %>%
+data <- data %>%
   group_by(Settlement, Company, Address) %>%
   summarise(
     avg_petrol = mean(`Diesel (HUF/l)`, na.rm = TRUE),
@@ -71,7 +71,7 @@ localities <- localities %>%
 # The merge is performed by matching the 'Settlement' column in the fuel price dataset with the 'Locality name' column in the Localities file, ensuring that each station record gets the demographic and administrative attributes of the settlement it belongs to.
 
 data <- left_join(
-  data_avg,
+  data,
   localities,
   by = c("Settlement" = "Locality name")
 )
