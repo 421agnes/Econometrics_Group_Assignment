@@ -68,7 +68,16 @@ localities <- localities %>%
     `District name`,
     `Resident population`,
     `Number of dwellings`
-  )
+  ) %>%
+rename(
+  `Locality`       = `Locality name`,
+  `Status`         = `Locality legal status`,
+  `County`         = `Name of county`,
+  `District`       = `District name`,
+  `Resident`       = `Resident population`,
+  `Dwellings`      = `Number of dwellings`,
+)
+
 
 # Join Localities → add legal status / county / district / population by Settlement / dwellings by Settlement
 # The merge is performed by matching the 'Settlement' column in the fuel price dataset with the 'Locality name' column in the Localities file, ensuring that each station record gets the demographic and administrative attributes of the settlement it belongs to.
@@ -76,7 +85,7 @@ localities <- localities %>%
 data <- left_join(
   data,
   localities,
-  by = c("Settlement" = "Locality name")
+  by = c("Settlement" = "Locality")
 )
 
 # Join Tourism nights per thousand capita (per districts)
@@ -89,8 +98,8 @@ tourism_nights <- tourism_nights %>%
     `VALUE`
   ) %>%
   rename(
-    `District name`                       = `JARAS_NEV`,
-    `Tourism nights per thousand capita`  = `VALUE`,
+    `District`        = `JARAS_NEV`,
+    `Tourism_nights`  = `VALUE`,
   )
 
 # District-level left join (only district level data is available)
@@ -98,7 +107,7 @@ tourism_nights <- tourism_nights %>%
 data <- left_join(
   data,
   tourism_nights,
-  by = "District name"
+  by = "District"
 )
 
 # Join public roads per hundred km2 at settlement level (handle Budapest districts by mapping them to "Budapest")
@@ -114,8 +123,8 @@ public_roads <- public_roads %>%
     `VALUE`
   ) %>%
   rename(
-    `Settlement`                    = `TELEP_NEV`,
-    `Public roads per hundred km2`  = `VALUE`,
+    `Settlement`    = `TELEP_NEV`,
+    `Roads`         = `VALUE`,
   )
 
 # if Settlement is a Budapest district (Roman or Arabic), use "Budapest", else use the original Settlement
@@ -147,14 +156,14 @@ earnings <- earnings %>%
     `VALUE`
   ) %>%
   rename(
-    `District name`                                                       = `JARAS_NEV`,
-    `Average monthly gross earnings of full-time employees per district`  = `VALUE`,
+    `District`             = `JARAS_NEV`,
+    `Earnings`             = `VALUE`,
   )
 
 data <- left_join(
   data,
   earnings,
-  by = "District name"
+  by = "District"
 )
 
 # Join Passenger cars per thousand capita at settlement level
@@ -167,8 +176,8 @@ car <- car %>%
     `VALUE`
   ) %>%
   rename(
-    `Settlement`                    = `TELEP_NEV`,
-    `Passenger cars per thousand cap`  = `VALUE`,
+    `Settlement`    = `TELEP_NEV`,
+    `Cars`          = `VALUE`,
   )
 
 data <- data %>%
