@@ -4,8 +4,9 @@ library(readxl)
 library(dplyr)
 
 # Read raw daily station-level price data and compute weekly averages per station
+library(readxl)
 
-data <- read_excel("C:/Users/421ag/Group assignment/2025.09.02-09.08.xlsx", sheet = "Sheet1")
+data <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/2025.09.02-09.08.xlsx", sheet = "Sheet1")
 
 data <- data %>%
   group_by(Settlement, Company, Address) %>%
@@ -19,7 +20,7 @@ data <- data %>%
 # Read Localities data
 # 'skip = 2' skips the top rows so row 3 becomes the header
 
-localities <- read_excel("C:/Users/421ag/Group assignment/dgh_download_2025.xlsx", sheet = "Localities 01.01.2025.",skip=2)
+localities <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/dgh_download_2025.xlsx", sheet = "Localities 01.01.2025.",skip=2)
 
 # Convert "Budapest 01. ker." → "Budapest I. kerület" in 'Locality name'
 # In the Localities dataset, Budapest districts are written with Arabic numerals (e.g. "Budapest 01. ker." or "Budapest 11. ker.").
@@ -78,7 +79,7 @@ data <- left_join(
 
 # Join Tourism nights per thousand capita (per districts)
 
-tourism_nights <- read_excel("C:/Users/421ag/Group assignment/Number of tourism nights spent at commercial accommodation establishments per thousand capita_2024.xlsx", sheet = "Number of tourism nights spent")
+tourism_nights <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/Number of tourism nights spent at commercial accommodation establishments per thousand capita_2024.xlsx", sheet = "Number of tourism nights spent")
 
 tourism_nights <- tourism_nights %>%
   dplyr::select(
@@ -103,7 +104,7 @@ data <- left_join(
 # For all other settlements, the data is provided at the settlement level. To ensure a consistent merge, Budapest districts are temporarily mapped to the common label "Budapest" during the join process, so that each district receives the same public road density value as the city as a whole, while other settlements are matched directly by their own names.
 
 
-public_roads <- read_excel("C:/Users/421ag/Group assignment/Public roads per hundred km2_2023.xlsx", sheet = "Public roads per hundred km2_20")
+public_roads <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/Public roads per hundred km2_2023.xlsx", sheet = "Public roads per hundred km2_20")
 
 public_roads <- public_roads %>%
   dplyr::select(
@@ -136,7 +137,7 @@ data <- data %>%
 
 # Join Average monthly gross earnings per district
 
-earnings <- read_excel("C:/Users/421ag/Group assignment/Average monthly gross earnings of full-time employees (residence of the employees)_2024.xlsx", sheet = "Average monthly gross earnings")
+earnings <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/Average monthly gross earnings of full-time employees (residence of the employees)_2024.xlsx", sheet = "Average monthly gross earnings")
 
 earnings <- earnings %>%
   dplyr::select(
@@ -156,7 +157,7 @@ data <- left_join(
 
 # Join Passenger cars per thousand capita at settlement level
 
-car <- read_excel("C:/Users/421ag/Group assignment/Passenger cars per thousand capita_2024.xlsx", sheet = "Passenger cars per thousand cap")
+car <- read_excel("C:/Users/421ag/Econometrics_Group_Assignment/Passenger cars per thousand capita_2024.xlsx", sheet = "Passenger cars per thousand cap")
 
 car <- car %>%
   dplyr::select(
