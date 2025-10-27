@@ -340,3 +340,12 @@ summary(model_gasoline_10)
 #linear regression for diesel
 model_diesel_10 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
 summary(model_diesel_10)
+
+
+#See which variables are numeric in our data
+sapply(data, is.numeric)
+
+# Correlation Matrix (Pearson)
+num_vars <- data[, c("avg_petrol","avg_diesel","Resident", "Tourism_nights", "Dwellings", "Earnings", "big_companies", "motorway", "min_quick" "only_from_motorway",  "Status_capital", "Status_city", "Status_village", "Status_maincities")]
+
+cor(num_vars, use = "complete.obs")
