@@ -349,3 +349,36 @@ sapply(data, is.numeric)
 num_vars <- data[, c("avg_petrol","avg_diesel","Resident", "Tourism_nights", "Dwellings", "Earnings", "big_companies", "motorway", "min_quick", "only_from_motorway",  "Status_capital", "Status_city", "Status_village", "Status_maincities")]
 
 cor(num_vars, use = "complete.obs")
+
+#linear regression for gasoline
+model_gasoline_11 <- lm(log(avg_petrol) ~ km_quick +only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_11)
+
+#linear regression for diesel
+model_diesel_11 <- lm(log(avg_diesel) ~ km_quick + only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_11)
+
+#linear regression for gasoline
+model_gasoline_12 <- lm(log(avg_petrol) ~ min_quick +only_from_motorway + motorway + Resident + big_companies ,data = data)
+summary(model_gasoline_12)
+
+#linear regression for diesel
+model_diesel_12 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway + Resident + big_companies ,data = data)
+summary(model_diesel_12)
+
+#linear regression for gasoline
+model_gasoline_13 <- lm(log(avg_petrol) ~ min_quick + only_from_motorway + motorway + log(Earnings) + Resident + big_companies ,data = data)
+summary(model_gasoline_13)
+
+#linear regression for diesel
+model_diesel_13 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway + log(Earnings) + Resident + big_companies ,data = data)
+summary(model_diesel_13)
+
+#linear regression for gasoline
+model_gasoline_14 <- lm(log(avg_petrol) ~ min_quick + only_from_motorway + motorway + Status_capital + Status_city + Status_village + Status_maincities + Resident + big_companies ,data = data)
+summary(model_gasoline_14)
+
+#linear regression for diesel
+model_diesel_14 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway +  Status_capital + Status_city + Status_village + Status_maincities + Resident + big_companies ,data = data)
+summary(model_diesel_14)
+
