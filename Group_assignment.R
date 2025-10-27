@@ -346,6 +346,6 @@ summary(model_diesel_10)
 sapply(data, is.numeric)
 
 # Correlation Matrix (Pearson)
-num_vars <- data[, c("avg_petrol","avg_diesel","Resident", "Tourism_nights", "Dwellings", "Earnings", "big_companies", "motorway", "min_quick" "only_from_motorway",  "Status_capital", "Status_city", "Status_village", "Status_maincities")]
+num_vars <- data[, c("avg_petrol","avg_diesel","Resident", "Tourism_nights", "Dwellings", "Earnings", "big_companies", "motorway", "min_quick", "only_from_motorway",  "Status_capital", "Status_city", "Status_village", "Status_maincities")]
 
 cor(num_vars, use = "complete.obs")
