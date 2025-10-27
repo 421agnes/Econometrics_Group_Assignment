@@ -215,6 +215,22 @@ big <- c("MOL", "SHELL","OMV")
 data <- data %>%
   mutate(big_companies = if_else(company_1 %in% big, 1L, 0L))
 
+#Dummy variable for the capital city
+data <- data %>%
+  mutate(Status_capital = if_else(Status == "fővárosi kerület", 1, 0))
+
+#Dummy variable for the cities
+data <- data %>%
+  mutate(Status_city = if_else(Status == "város", 1, 0))
+
+#Dummy variable for the villages
+data <- data %>%
+  mutate(Status_village = if_else(Status == "község" | Status == "nagyközség", 1, 0))
+
+#Dummy variable for the main cities
+data <- data %>%
+  mutate(Status_maincities = if_else(Status == "megyei jogú város" | Status == "megyeszékhely, megyei jogú város", 1, 0))
+
 # Number of observations in each group
 print(table(data$big_companies))
 # 0 = other companies (459 obs); 1 = big companies (734)
