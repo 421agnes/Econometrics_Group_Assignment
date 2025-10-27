@@ -235,3 +235,15 @@ data <- data %>%
 print(table(data$big_companies))
 # 0 = other companies (459 obs); 1 = big companies (734)
 
+#linear regression for gasoline
+model_gasoline <- lm(avg_petrol ~ Earnings + big_companies ,data = data)
+summary(model_gasoline)
+
+#linear regression for diesel
+model_diesel <- lm(avg_diesel ~ Earnings + big_companies ,data = data)
+summary(model_diesel)
+
+#stargazer
+library(stargazer)
+stargazer(model_gasoline, model_diesel, type = "text")
+
