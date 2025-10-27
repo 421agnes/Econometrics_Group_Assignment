@@ -397,3 +397,18 @@ BIC(model_diesel_14, model_diesel_13, model_diesel_12, model_diesel_10, model_di
 # Gasoline AIC and BIC
 AIC(model_gasoline_14, model_gasoline_13, model_gasoline_12, model_gasoline_10, model_gasoline_4, model_gasoline_8)
 BIC(model_gasoline_14, model_gasoline_13, model_gasoline_12, model_gasoline_10, model_gasoline_4, model_gasoline_8)
+
+#linear regression for gasoline
+model_gasoline_15 <- lm(log(avg_petrol) ~ min_quick + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_15)
+
+#linear regression for diesel
+model_diesel_15 <- lm(log(avg_diesel) ~ min_quick + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_15)
+
+stargazer(model_gasoline_15,type="text")
+stargazer(model_diesel_15,type="text")
+AIC(model_gasoline_15)
+BIC(model_diesel_15)
+BIC(model_gasoline_15)
+AIC(model_diesel_15)
