@@ -382,3 +382,16 @@ summary(model_gasoline_14)
 model_diesel_14 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway +  Status_capital + Status_city + Status_village + Status_maincities + Resident + big_companies ,data = data)
 summary(model_diesel_14)
 
+# Create the stargazer diesel
+stargazer(model_diesel_14, model_diesel_13, model_diesel_12, model_diesel_10, model_diesel_4, model_diesel_8)
+
+# Create the stargazer gasoline
+stargazer(model_gasoline_14, model_gasoline_13, model_gasoline_12, model_gasoline_10, model_gasoline_4, model_gasoline_8)
+
+# Diesel AIC and BIC
+AIC(model_diesel_14, model_diesel_13, model_diesel_12, model_diesel_10, model_diesel_4, model_diesel_8)
+BIC(model_diesel_14, model_diesel_13, model_diesel_12, model_diesel_10, model_diesel_4, model_diesel_8)
+
+# Gasoline AIC and BIC
+AIC(model_gasoline_14, model_gasoline_13, model_gasoline_12, model_gasoline_10, model_gasoline_4, model_gasoline_8)
+BIC(model_gasoline_14, model_gasoline_13, model_gasoline_12, model_gasoline_10, model_gasoline_4, model_gasoline_8)
