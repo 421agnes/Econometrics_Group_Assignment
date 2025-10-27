@@ -295,3 +295,48 @@ summary(model_gasoline_7)
 model_diesel_7 <- lm(log(avg_diesel) ~ log(Resident) + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
 summary(model_diesel_7)
 
+motorway <- read_excel("new2025.09.02-09.08.xlsx", sheet = "Sheet1")
+
+motorway <- motorway %>%
+  dplyr::select(
+    `Address`,
+    `motorway`,
+    `bp_sections_plus_motorways`,
+    `vignette`,
+    `only_from_motorway`,
+    `min_quick`,
+    `min_short`,
+    `km_short`,
+    `km_quick`,
+    `settlement_year_salary`,
+  )
+
+data <- left_join(
+  data,
+  motorway,
+  by = "Address"
+)
+
+#linear regression for gasoline
+model_gasoline_8 <- lm(log(avg_petrol) ~ motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_8)
+
+#linear regression for diesel
+model_diesel_8 <- lm(log(avg_diesel) ~ motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_8)
+
+#linear regression for gasoline
+model_gasoline_9 <- lm(log(avg_petrol) ~ only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_9)
+
+#linear regression for diesel
+model_diesel_9 <- lm(log(avg_diesel) ~ only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_9)
+
+#linear regression for gasoline
+model_gasoline_10 <- lm(log(avg_petrol) ~ min_quick +only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_10)
+
+#linear regression for diesel
+model_diesel_10 <- lm(log(avg_diesel) ~ min_quick + only_from_motorway + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_10)
