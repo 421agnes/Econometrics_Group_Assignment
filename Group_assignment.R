@@ -196,3 +196,26 @@ data <- data %>%
     by = c("settlement_join" = "Settlement")
   ) %>%
   dplyr::select(-settlement_join) # remove helper column
+
+##### For the company dummy
+# Trim extra spaces and uppercases to help matching
+data <- data %>%
+  mutate(company_1=str_squish(toupper(Company)))
+
+#Frequency of the variable Company - extract the biggest companies
+table <- table(data$Company)
+table_df <- as.data.frame(table)
+table_df <- table_df[order(-table), ]
+table_df
+
+# Define 'big' as including 3 biggest companies
+big <- c("MOL", "SHELL","OMV")
+
+# big_companies = 1 if company ∈ big_companies; 0 otherwise
+data <- data %>%
+  mutate(big_companies = if_else(company_1 %in% big, 1L, 0L))
+
+# Number of observations in each group
+print(table(data$big_companies))
+# 0 = other companies (459 obs); 1 = big companies (734)
+
