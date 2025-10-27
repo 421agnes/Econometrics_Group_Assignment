@@ -247,3 +247,51 @@ summary(model_diesel)
 library(stargazer)
 stargazer(model_gasoline, model_diesel, type = "text")
 
+#linear regression for gasoline
+model_gasoline_2 <- lm(avg_petrol ~ log(Earnings) + big_companies ,data = data)
+summary(model_gasoline_2)
+
+#linear regression for diesel
+model_diesel_2 <- lm(avg_diesel ~ log(Earnings) + big_companies ,data = data)
+summary(model_diesel_2)
+
+#linear regression for gasoline
+model_gasoline_3 <- lm(avg_petrol ~ Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_3)
+
+#linear regression for diesel
+model_diesel_3 <- lm(avg_diesel ~ Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_3)
+
+#linear regression for gasoline
+model_gasoline_4 <- lm(avg_petrol ~ log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_4)
+
+#linear regression for diesel
+model_diesel_4 <- lm(avg_diesel ~ log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_4)
+
+#linear regression for gasoline
+model_gasoline_5 <- lm(log(avg_petrol) ~ log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_5)
+
+#linear regression for diesel
+model_diesel_5 <- lm(log(avg_diesel) ~ log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_5)
+
+#linear regression for gasoline
+model_gasoline_6 <- lm(log(avg_petrol) ~ Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_6)
+
+#linear regression for diesel
+model_diesel_6 <- lm(log(avg_diesel) ~ Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_6)
+
+#linear regression for gasoline
+model_gasoline_7 <- lm(log(avg_petrol) ~ log(Resident) + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_gasoline_7)
+
+#linear regression for diesel
+model_diesel_7 <- lm(log(avg_diesel) ~ log(Resident) + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
+summary(model_diesel_7)
+
