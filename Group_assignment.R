@@ -3,6 +3,7 @@ rm(list = ls()) # wipe all objects from the workspace for a clean run
 library(readxl)
 library(dplyr)
 library(stringr)
+library(stargazer)
 
 # Read raw daily station-level price data and compute weekly averages per station
 
@@ -243,10 +244,6 @@ summary(model_gasoline)
 model_diesel <- lm(avg_diesel ~ Earnings + big_companies ,data = data)
 summary(model_diesel)
 
-#stargazer
-library(stargazer)
-stargazer(model_gasoline, model_diesel, type = "text")
-
 #linear regression for gasoline
 model_gasoline_2 <- lm(avg_petrol ~ log(Earnings) + big_companies ,data = data)
 summary(model_gasoline_2)
@@ -294,6 +291,8 @@ summary(model_gasoline_7)
 #linear regression for diesel
 model_diesel_7 <- lm(log(avg_diesel) ~ log(Resident) + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
 summary(model_diesel_7)
+
+# Join Motorway dummy
 
 motorway <- read_excel("new2025.09.02-09.08.xlsx", sheet = "Sheet1")
 
@@ -406,8 +405,13 @@ summary(model_gasoline_15)
 model_diesel_15 <- lm(log(avg_diesel) ~ min_quick + motorway + Resident + log(Earnings) + Status_capital + Status_city + Status_village + Status_maincities + big_companies ,data = data)
 summary(model_diesel_15)
 
+# Create the stargazer gasoline and diesel for the new model
+
 stargazer(model_gasoline_15,type="text")
 stargazer(model_diesel_15,type="text")
+
+# Gasoline and diesel AIC and BIC for the new model
+
 AIC(model_gasoline_15)
 BIC(model_diesel_15)
 BIC(model_gasoline_15)
