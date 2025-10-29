@@ -1,4 +1,4 @@
-################## For the models we include on stargazer ######## 
+################## For the models we include on stargazer (main Script) ######## 
 
 # 1) Define the headers and rename the models for better understanding
 gas_models <- list(
