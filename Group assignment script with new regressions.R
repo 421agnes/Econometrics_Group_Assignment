@@ -1,4 +1,4 @@
-############## New regressions idea ######################
+############## New Script with new regressions idea ######################
 
 rm(list = ls()) # wipe all objects from the workspace for a clean run
 
