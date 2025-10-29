@@ -281,20 +281,20 @@ append_line <- function(path, ...) cat(..., "\n", file = path, append = TRUE)
 ##    settlement type (Status dummies), min_quick variables.
 ############################################################
 
-model1_diesel <- lm(avg_diesel ~ log(Earnings) + big_companies, data = data)
+model1_diesel <- lm(log(avg_diesel) ~ log(Earnings) + big_companies, data = data)
 summary(model1_diesel)
 
-model2_diesel <- lm(avg_diesel ~ log(Earnings) + big_companies + motorway, data = data)
+model2_diesel <- lm(log(avg_diesel) ~ log(Earnings) + big_companies + motorway, data = data)
 summary(model2_diesel)
 
-model3_diesel <- lm(avg_diesel ~ log(Earnings) + big_companies + motorway + Resident, data = data)
+model3_diesel <- lm(log(avg_diesel) ~ log(Earnings) + big_companies + motorway + Resident, data = data)
 summary(model3_diesel)
 
-model4_diesel <- lm(avg_diesel ~ log(Earnings) + big_companies + motorway + Resident +
+model4_diesel <- lm(log(avg_diesel) ~ log(Earnings) + big_companies + motorway + Resident +
                       Status_capital + Status_city + Status_village, data = data)
 summary(model4_diesel)
 
-model5_diesel <- lm(avg_diesel ~ log(Earnings) + big_companies + motorway + Resident +
+model5_diesel <- lm(log(avg_diesel) ~ log(Earnings) + big_companies + motorway + Resident +
                                           Status_capital + Status_city + Status_village + min_quick, data = data)
 summary(model5_diesel)
 
@@ -317,21 +317,21 @@ diesel_models <- list(
 ## 2) GASOLINE: OLS stepwise chain and Heteroscedasticity test
 ############################################################
 
-model1_gas <- lm(avg_petrol ~ log(Earnings) + big_companies, data = data)
+model1_gas <- lm(log(avg_petrol) ~ log(Earnings) + big_companies, data = data)
 summary(model1_gas)
 
-model2_gas <- lm(avg_petrol ~ log(Earnings) + big_companies + motorway, data = data)
+model2_gas <- lm(log(avg_petrol) ~ log(Earnings) + big_companies + motorway, data = data)
 summary(model2_gas)
 
-model3_gas <- lm(avg_petrol ~ log(Earnings) + big_companies + motorway + Resident, data = data)
+model3_gas <- lm(log(avg_petrol) ~ log(Earnings) + big_companies + motorway + Resident, data = data)
 summary(model3_gas)
 
-model4_gas <- lm(avg_petrol ~ log(Earnings) + big_companies + motorway + Resident +
+model4_gas <- lm(log(avg_petrol) ~ log(Earnings) + big_companies + motorway + Resident +
                    Status_capital + Status_city + Status_village, data = data)
 summary(model4_gas)
 
 
-model5_gas <- lm(avg_petrol ~ log(Earnings) + big_companies + motorway + Resident +
+model5_gas <- lm(log(avg_petrol) ~ log(Earnings) + big_companies + motorway + Resident +
                    Status_capital + Status_city + Status_village + min_quick, data = data)
 summary(model5_gas)
 
