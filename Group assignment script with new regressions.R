@@ -373,6 +373,7 @@ msummary(
    output = "outputs/regression_tableDiesel.docx"
   )
 
+
 ########## Information Criteria AIC and BIC
 AIC_BIC_table <- data.frame(
   Model = c("(1)log(Earnings)+big_companies", "(2)+motorway",
