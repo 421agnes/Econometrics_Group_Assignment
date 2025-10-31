@@ -18,8 +18,8 @@ data <- read_excel("2025.09.02-09.08.xlsx", sheet = "Sheet1")
 data <- data %>%
   group_by(Settlement, Company, Address) %>%
   summarise(
-    avg_petrol = mean(`Diesel (HUF/l)`, na.rm = TRUE),
-    avg_diesel = mean(`Gasoline (HUF/l)`, na.rm = TRUE),
+    avg_diesel = mean(`Diesel (HUF/l)`, na.rm = TRUE),
+    avg_petrol = mean(`Gasoline (HUF/l)`, na.rm = TRUE),
     .groups = "drop"
   )
 
